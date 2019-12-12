@@ -13,15 +13,15 @@ const SearchBox: React.FC<SearchBoxProps> = (props: SearchBoxProps) => {
   return (
     <div className='margins-between-components'>
       <Form>
-        <Form.Group as={Row} controlId="formRepoUser">
+        <Form.Group as={Row}>
           <Form.Label column sm={3}>
             Github user
           </Form.Label>
           <Col sm={7}>
-            <Form.Control type="text" placeholder="Enter username" value={user} onChange={handlerUser} />
+            <Form.Control id="username" type="text" placeholder="Enter username" value={user} onChange={handlerUser} />
           </Col>
           <Col sm={2}>
-            <Button onClick={() => props.search(user)}>
+            <Button id='searchButton' onClick={() => props.search(user)}>
               Let's search!!
             </Button>
           </Col>
