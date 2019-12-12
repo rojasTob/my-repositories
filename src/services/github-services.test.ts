@@ -2,6 +2,11 @@ import { getProjectsByUser, ProjectByUserResponse } from './github-services';
 
 describe('github-service', () => {
   describe('getProjectsByUser', () => {
+
+    beforeEach(() => {
+      fetch.resetMocks();
+    })
+
     describe('when API responds successfully', () => {
       const data = [
         { id: 1, name: 'name1', fullname: 'fullname1', created_at: 'date1', updated_at: 'date2' },

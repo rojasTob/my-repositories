@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {Form, Button, Col, Row} from 'react-bootstrap';
+import { Form, Button, Col, Row } from 'react-bootstrap';
 
 interface SearchBoxProps {
   search: (user: string) => void;
@@ -10,7 +10,7 @@ const SearchBox: React.FC<SearchBoxProps> = (props: SearchBoxProps) => {
 
   const handlerUser = (e: React.ChangeEvent<HTMLInputElement>) => setUser(e.target.value);
 
-  return(
+  return (
     <div className='margins-between-components'>
       <Form>
         <Form.Group as={Row} controlId="formRepoUser">
@@ -18,7 +18,7 @@ const SearchBox: React.FC<SearchBoxProps> = (props: SearchBoxProps) => {
             Github user
           </Form.Label>
           <Col sm={7}>
-          <Form.Control type="text" placeholder="Enter username" value={user} onChange={handlerUser}/>
+            <Form.Control type="text" placeholder="Enter username" value={user} onChange={handlerUser} />
           </Col>
           <Col sm={2}>
             <Button onClick={() => props.search(user)}>
