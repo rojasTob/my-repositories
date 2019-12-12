@@ -1,20 +1,20 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import './App.css';
-import {Container, Row, Col} from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 import SearchBox from './components/SearchBox';
 import RepositoriesList from './components/RepositoriesList';
 
-import {getProjectsByUser} from './services/github-services';
+import { getProjectsByUser } from './services/github-services';
 
 const App: React.FC = () => {
 
-  const [repositories, setRepositories] = useState([{name: '', created_at: '', updated_at: ''}]);
+  const [repositories, setRepositories] = useState([{ name: '', created_at: '', updated_at: '' }]);
   const [message, setMessage] = useState('First, enter a valid Github username :)');
 
-  const searchThings = async(user: string) => {
+  const searchThings = async (user: string) => {
     const data = await getProjectsByUser(user);
-      setRepositories(data.repositories);
-      setMessage(data.message);
+    setRepositories(data.repositories);
+    setMessage(data.message);
   };
 
   return (
@@ -24,10 +24,10 @@ const App: React.FC = () => {
           <Col className="App-header">React with Hooks</Col>
         </Row>
         <Row>
-          <Col sm={12}><SearchBox search={searchThings}></SearchBox></Col>
+          <Col sm={12}><SearchBox search={searchThings} /></Col>
         </Row>
         <Row>
-          <Col sm={12}><RepositoriesList list={repositories} message={message}></RepositoriesList></Col>
+          <Col sm={12}><RepositoriesList list={repositories} message={message} /></Col>
         </Row>
       </Container>
     </>
