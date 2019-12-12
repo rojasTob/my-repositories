@@ -38,8 +38,10 @@ describe('github-service', () => {
 
         await expect(getProjectsByUser('user_not_exists')).rejects.toEqual({ error: 'User not found :(' });
       });
+    });
 
-      test('rejects an ', async () => {
+    describe('when is not possible to connect to the API', () => {
+      test('rejects with an error message', async () => {
         fetch.mockReject({ error: 'cannot connect to the API' });
 
         await expect(getProjectsByUser('username')).rejects.toEqual({ error: 'Something wrong happened when calling GitHub API' });
