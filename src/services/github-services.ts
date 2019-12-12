@@ -1,6 +1,6 @@
 const GITHUB_URL = 'https://api.github.com';
 
-interface ProjectByUserResponse {
+export interface ProjectByUserResponse {
   message: string;
   repositories: RepositoryData[];
 }
@@ -24,11 +24,7 @@ export const getProjectsByUser = (username: string): Promise<ProjectByUserRespon
         return Promise.reject(generateResponse('Not found repositories :(', [])); //TODO handle error
       }
 
-      const repos = repositories.map((repo: any) => ({
-        name: repo.name, created_at:
-          repo.created_at, updated_at:
-          repo.updated_at
-      }));
+      const repos = repositories.map((repo: any) => ({ name: repo.name, created_at: repo.created_at, updated_at: repo.updated_at }));
 
       return Promise.resolve(generateResponse(`Found ${repos.length} repositories :)`, repos));
     })
