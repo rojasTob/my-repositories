@@ -20,16 +20,16 @@ export const getProjectsByUser = (username: string): Promise<ProjectByUserRespon
   return fetch(url, { method: 'GET', headers: { 'Accept': 'application/vnd.github.inertia-preview+json' } })
     .then(response => response.json())
     .then(repositories => {
+
       if (repositories.message) {
-        return Promise.reject(generateResponse('Not found repositories :(', [])); //TODO handle error
+        return Promise.reject(generateResponse('User not found :(', [])); //TODO handle error
       }
 
       const repos = repositories.map((repo: any) => ({ name: repo.name, created_at: repo.created_at, updated_at: repo.updated_at }));
-
       return Promise.resolve(generateResponse(`Found ${repos.length} repositories :)`, repos));
     })
     .catch(error => {
-      console.error('Error on retrieving repos: ', error);
-      return Promise.reject({ error: 'Something wrong happened when calling GitHub API' });
+      const errorMessage = error.message || 'Something wrong happened when calling GitHub API';
+      return Promise.reject({ error: errorMessage });
     });
 }
