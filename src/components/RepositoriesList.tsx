@@ -1,6 +1,6 @@
 import React from "react";
-import {Table, Alert} from 'react-bootstrap';
-import {RepositoryData} from '../services/github-services';
+import { Table, Alert } from 'react-bootstrap';
+import { RepositoryData } from '../services/github-services';
 
 interface RepositoriesProps {
   list: RepositoryData[];
@@ -11,8 +11,8 @@ interface RepositoriesProps {
 const RepositoriesList: React.FC<RepositoriesProps> = (props: RepositoriesProps) => {
   return (
     <div className='margins-between-components'>
-      <Alert variant='secondary'>{props.message}</Alert>
-      <Table striped bordered hover size="sm">
+      <Alert id='alertMessage' variant='secondary'>{props.message}</Alert>
+      <Table id='repos' striped bordered hover size="sm">
         <thead>
           <tr>
             <th>Name</th>
